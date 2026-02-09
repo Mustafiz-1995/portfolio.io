@@ -1,16 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mustafiz Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md Mustafizur Rahman | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1>Md Mustafizur Rahman</h1>
-<p>Garments Operation Specialist</p>
+  <main class="container">
+    <!-- HERO / INTRO -->
+    <section class="card">
+      <h1>Md Mustafizur Rahman</h1>
+      <p class="subtitle">Garments Operation Specialist</p>
 
-<p>
-With over six (6) years of experience in the apparel manufacturing industry,
-I specialize in industrial engineering, operations management, and process optimization.
-</p>
+      <p class="lead">
+        With over six (6) years of experience in the apparel manufacturing industry, I specialize in
+        industrial engineering, operations management, and process optimization.
+      </p>
+    </section>
 
+    <!-- WORKING EXPERIENCE -->
+    <section class="card">
+      <h2>Working Experience</h2>
+      <ul>
+        <li><b>Paramount Textile PLC</b> — Gazipur</li>
+        <li><b>Fakir Apparels Ltd</b> — Narayanganj</li>
+        <li><b>Ha-meem Group Ltd</b> — Gazipur</li>
+        <li><b>Ha-meem Textile Zone</b> — Sreepur, Gazipur</li>
+      </ul>
+    </section>
+
+    <!-- KEY ACHIEVEMENTS -->
+    <section class="card">
+      <h2>Key Achievements</h2>
+      <ul>
+        <li>Set up 4 new production lines (recruitment to full running).</li>
+        <li>Improved new floor efficiency from 0% to 55%.</li>
+        <li>Improved quality performance using 1-piece flow and red-card control system.</li>
+        <li>Designed a new R&amp;D layout setup at Ha-meem Textile Zone.</li>
+      </ul>
+    </section>
+
+    <!-- TOOLS / SKILLS -->
+    <section class="card">
+      <h2>Tools for Improvements</h2>
+      <ul>
+        <li><b>SMED</b> — changeover time reduction</li>
+        <li><b>3P</b> — Production, Process, Preparation</li>
+        <li><b>1 Piece Flow</b> — faster defect & bottleneck visibility</li>
+        <li><b>STW</b> — Standardized Work</li>
+        <li><b>Gemba Walk</b> — solve problems at the shopfloor</li>
+        <li><b>Takt Time</b> — delivery control</li>
+        <li><b>Downtime Record</b> — NPT loss analysis</li>
+        <li><b>Bottleneck Analysis</b> — capacity balancing</li>
+        <li><b>Ergonomics</b> — workplace engineering</li>
+        <li><b>6S</b> — better workplace organization</li>
+        <li><b>OEE</b> — downtime & performance tracking</li>
+      </ul>
+    </section>
+
+    <!-- SOFTWARE -->
+    <section class="card">
+      <h2>Software / Data Tools</h2>
+      <ul>
+        <li>MS Office (Excel, Word, PowerPoint, Outlook)</li>
+        <li>Power BI</li>
+        <li>Tableau</li>
+        <li>AutoCAD (2D)</li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card">
+      <h2>Get in touch</h2>
+      <p><b>Email:</b> <a href="mailto:mustafiz.butex@gmail.com">mustafiz.butex@gmail.com</a></p>
+      <p><b>Phone:</b> +880-1774-005521</p>
+      <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/mustafiz1995" target="_blank" rel="noreferrer">mustafiz1995</a></p>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span> Md Mustafizur Rahman
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
