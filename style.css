@@ -1,7 +1,40 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: white;
-  text-align: center;
-  margin-top: 50px;
+:root{
+  --bg:#0b1220;
+  --card:#101a2e;
+  --text:#e9eefc;
+  --muted:#aeb9d6;
+  --line:rgba(255,255,255,.10);
+  --accent:#6aa7ff;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+body{background:var(--bg);color:var(--text);line-height:1.6}
+
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.container{max-width:920px;margin:0 auto;padding:24px}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+  margin:14px 0;
+}
+
+h1{margin:0 0 6px;font-size:38px}
+h2{margin:0 0 10px;font-size:22px}
+.subtitle{margin:0 0 12px;color:var(--muted);font-size:16px}
+.lead{color:var(--muted);max-width:65ch}
+
+ul{margin:0;padding-left:18px}
+li{margin:8px 0;color:var(--muted)}
+li b{color:var(--text)}
+
+.footer{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
 }
