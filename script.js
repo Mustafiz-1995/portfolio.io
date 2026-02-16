@@ -67,3 +67,46 @@ document.querySelectorAll(".tilt").forEach(card=>{
 // Footer year
 const y = document.getElementById("year");
 if(y) y.textContent = new Date().getFullYear();
+/* =========================
+   1) Page transition on link click
+   ========================= */
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a");
+  if (!a) return;
+
+  const href = a.getAttribute("href");
+  if (!href) return;
+
+  // Only internal html pages (your portfolio pages)
+  const isInternalPage =
+    href.endsWith(".html") &&
+    !href.startsWith("http") &&
+    !href.startsWith("#") &&
+    !href.startsWith("mailto:") &&
+    !href.startsWith("tel:");
+
+  if (!isInternalPage) return;
+
+  e.preventDefault();
+  document.body.classList.add("page-leave");
+
+  setTimeout(() => {
+    window.location.href = href;
+  }, 220);
+});
+
+/* =========================
+   2) Scroll reveal animation
+   ========================= */
+const revealItems = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("active");
+    });
+  },
+  { threshold: 0.12 }
+);
+
+revealItems.forEach((el) => revealObserver.observe(el));
