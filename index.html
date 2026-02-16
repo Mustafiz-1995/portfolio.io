@@ -1,88 +1,464 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Mustafiz | Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mustafiz Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="progress"></div>
+  <!-- Background FX -->
+  <div class="bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="grain"></div>
+  </div>
 
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="brand"><span class="brand-dot"></span><span>Mustafiz</span></div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="experience.html">Experience</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+  <!-- App -->
+  <main class="app" id="app">
+
+    <!-- Slide 1: HOME / MENU -->
+    <section class="slide active" data-title="Home">
+      <div class="card hero">
+        <div class="hero-left">
+          <!-- ✅ Put your profile image here -->
+          <img class="avatar" src="assets/img/profile.jpg" alt="Mustafiz" />
+          <div class="hero-text">
+            <h1 class="title">
+              Md <span class="accent">Mustafizur Rahman</span>
+            </h1>
+            <p class="subtitle">Garments Operation Specialist</p>
+
+            <div class="chips">
+              <span class="chip">Lean</span>
+              <span class="chip">OEE</span>
+              <span class="chip">SMED</span>
+              <span class="chip">Industrial Engineering</span>
+              <span class="chip">Operations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu">
+          <h2 class="h2">Portfolio Menu</h2>
+          <p class="muted">Click any section to jump (you can always return).</p>
+
+          <div class="menu-grid" id="menuGrid">
+            <!-- JS auto-fills from slides list -->
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="hint">Tip: Use ← → keys for navigation</div>
+      </footer>
+    </section>
+
+    <!-- Slide 2: ABOUT ME -->
+    <section class="slide" data-title="About Me">
+      <div class="card">
+        <h2 class="h2">About <span class="accent">Me</span></h2>
+        <p class="lead">
+          With over six (6) years of experience in the apparel manufacturing industry, I specialize in industrial engineering,
+          operations management, and process optimization.
+        </p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">What I do</h3>
+            <ul class="list">
+              <li>Lean manufacturing & continuous improvement</li>
+              <li>Capacity planning & line balancing</li>
+              <li>Process optimization & waste reduction</li>
+              <li>Cross-functional collaboration (IE / QA / Production / Maintenance)</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3 class="h3">Visual Focus</h3>
+            <!-- ✅ Example image (you can change) -->
+            <img class="img" src="assets/img/lean-wheel.png" alt="Lean" />
+            <p class="muted small">Replace this image with your preferred visual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: PROFILE / EDUCATION -->
+    <section class="slide" data-title="Profile & Education">
+      <div class="card">
+        <h2 class="h2">Profile & <span class="accent">Education</span></h2>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Profile</h3>
+            <p class="lead">Operational Excellence Expert – Garments & Textile Processes</p>
+            <ul class="list">
+              <li>Lean, OEE, SMED, Kaizen culture</li>
+              <li>Data-driven decision making</li>
+              <li>People + process + performance focus</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3 class="h3">Education</h3>
+            <ul class="list">
+              <li>Master in Textile Engineering (Wuhan Textile University, China) – On-going</li>
+              <li>PGD in Garments Business (IBA-DU, Bangladesh)</li>
+              <li>BSc in Textile Engineering (BUTEX, Bangladesh)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: CORE SKILLS -->
+    <section class="slide" data-title="Core Skills">
+      <div class="card">
+        <h2 class="h2">Core <span class="accent">Skills</span></h2>
+
+        <div class="skill-grid">
+          <div class="skill">
+            <h3 class="h3">Lean Manufacturing</h3>
+            <p class="muted">Cost saving, waste elimination, flow improvement</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">QMS</h3>
+            <p class="muted">Quality control, defect reduction, standardization</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">Operations Management</h3>
+            <p class="muted">Planning, coordination, productivity tracking</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">Leadership</h3>
+            <p class="muted">Team setup, training, daily management system</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">KPI Project Mgmt</h3>
+            <p class="muted">OEE, efficiency, DHU, delivery improvement</p>
+          </div>
+        </div>
+
+        <div class="media-row">
+          <!-- ✅ Put your OEE image here -->
+          <img class="img small-img" src="assets/img/oee.png" alt="OEE" />
+          <!-- ✅ Put your quality compass image here -->
+          <img class="img small-img" src="assets/img/quality-compass.jpg" alt="Quality" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: WORKING EXPERIENCE OVERVIEW -->
+    <section class="slide" data-title="Experience Overview">
+      <div class="card">
+        <h2 class="h2">Working <span class="accent">Experience</span></h2>
+        <p class="lead">Spinning → weaving → dyeing → garments finishing (end-to-end exposure)</p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Companies</h3>
+            <ol class="list">
+              <li>Paramount Textile PLC</li>
+              <li>Fakir Apparels Ltd.</li>
+              <li>Ha-Meem Group Ltd.</li>
+              <li>Ha-Meem Textiles Zone</li>
+            </ol>
+          </div>
+
+          <div class="panel">
+            <h3 class="h3">Factory Visual</h3>
+            <img class="img" src="assets/img/garment-factory.webp" alt="Factory" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: PARAMOUNT -->
+    <section class="slide" data-title="Paramount Textile PLC">
+      <div class="card">
+        <h2 class="h2">Paramount <span class="accent">Textile PLC</span></h2>
+        <p class="muted">Gilarchala, Gorgoria Masterbari, Gazipur</p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Highlights</h3>
+            <ul class="list">
+              <li>Process monitoring and improvement support</li>
+              <li>Lean KPI tracking and reporting</li>
+              <li>Cross-team coordination</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">Lean Visual</h3>
+            <img class="img" src="assets/img/takt.jpg" alt="Takt Time" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7: FAKIR -->
+    <section class="slide" data-title="Fakir Apparels Ltd.">
+      <div class="card">
+        <h2 class="h2">Fakir <span class="accent">Apparels Ltd.</span></h2>
+        <p class="muted">BSCIC, Fatulla, Narayanganj</p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Work Focus</h3>
+            <ul class="list">
+              <li>Line setup & production readiness</li>
+              <li>Efficiency improvement roadmap</li>
+              <li>Standardization and training</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">3P / Layout</h3>
+            <img class="img" src="assets/img/3p.jpg" alt="3P" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: HA-MEEM GROUP -->
+    <section class="slide" data-title="Ha-Meem Group Ltd.">
+      <div class="card">
+        <h2 class="h2">Ha-Meem <span class="accent">Group Ltd.</span></h2>
+        <p class="muted">Millgate, Nishatnagar, Tongi, Gazipur</p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Key Works</h3>
+            <ul class="list">
+              <li>Automation and productivity improvement</li>
+              <li>Method study & work study support</li>
+              <li>Operational discipline and KPI reviews</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">Automation Visual</h3>
+            <img class="img" src="assets/img/automation.jpg" alt="Automation" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9: HA-MEEM TEXTILES ZONE -->
+    <section class="slide" data-title="Ha-Meem Textiles Zone">
+      <div class="card">
+        <h2 class="h2">Ha-Meem <span class="accent">Textiles Zone</span></h2>
+        <p class="muted">Telihati, Sreepur, Gazipur</p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Highlights</h3>
+            <ul class="list">
+              <li>Lean projects, reporting, and management support</li>
+              <li>Efficiency growth tracking</li>
+              <li>Tool-driven improvements</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">Efficiency Visual</h3>
+            <img class="img" src="assets/img/efficiency-growth.jpg" alt="Growth" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 10: KEY ACHIEVEMENTS -->
+    <section class="slide" data-title="Key Achievements">
+      <div class="card">
+        <h2 class="h2">Key <span class="accent">Achievements</span></h2>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">New Line Setup</h3>
+            <ul class="list">
+              <li>4 new lines setup (recruitment → full running)</li>
+              <li>Workforce planning and layout alignment</li>
+              <li>Output stability improvement</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">Lean 6S Visual</h3>
+            <img class="img" src="assets/img/6s.jpg" alt="6S" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 11: EFFICIENCY IMPROVEMENT -->
+    <section class="slide" data-title="Efficiency Improvement">
+      <div class="card">
+        <h2 class="h2">How I Improve <span class="accent">Efficiency</span></h2>
+        <p class="lead">Reduce, Reuse & Recycle → towards sustainability</p>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Approach</h3>
+            <ul class="list">
+              <li>Bottleneck identification & balancing</li>
+              <li>Method improvement and workstation design</li>
+              <li>Standard work + daily follow-up</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">Bottleneck Visual</h3>
+            <img class="img" src="assets/img/bottleneck.jpg" alt="Bottleneck" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 12: TOOLS FOR IMPROVEMENT -->
+    <section class="slide" data-title="Tools for Improvement">
+      <div class="card">
+        <h2 class="h2">Tools for <span class="accent">Improvement</span></h2>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Key Tools</h3>
+            <ul class="list">
+              <li>QCO</li>
+              <li>SMED</li>
+              <li>Kaizen</li>
+              <li>Visual Management</li>
+              <li>Standardization</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="h3">SMED Visual</h3>
+            <img class="img" src="assets/img/smed.jpg" alt="SMED" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 13: LEAN TOOLKIT GALLERY -->
+    <section class="slide" data-title="Lean Toolkit Gallery">
+      <div class="card">
+        <h2 class="h2">Lean <span class="accent">Toolkit</span></h2>
+
+        <div class="gallery">
+          <figure class="gitem">
+            <img src="assets/img/gemba.png" alt="Gemba">
+            <figcaption>Gemba Walk</figcaption>
+          </figure>
+          <figure class="gitem">
+            <img src="assets/img/takt.jpg" alt="Takt">
+            <figcaption>Takt Time</figcaption>
+          </figure>
+          <figure class="gitem">
+            <img src="assets/img/standardization.jpg" alt="Standardization">
+            <figcaption>Standardization</figcaption>
+          </figure>
+          <figure class="gitem">
+            <img src="assets/img/single-piece-flow.png" alt="SPF">
+            <figcaption>Single Piece Flow</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 14: SOFTWARE / DATA -->
+    <section class="slide" data-title="Software & Data">
+      <div class="card">
+        <h2 class="h2">Software & <span class="accent">Data</span></h2>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3 class="h3">Tools I Use</h3>
+            <ul class="list">
+              <li>Power BI</li>
+              <li>Excel / Office</li>
+              <li>AutoCAD</li>
+              <li>Dashboards & reporting</li>
+            </ul>
+
+            <div class="logo-row">
+              <img class="logo" src="assets/img/ms-office.png" alt="MS Office" />
+              <img class="logo" src="assets/img/autocad.png" alt="AutoCAD" />
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3 class="h3">Dashboard Visual</h3>
+            <img class="img" src="assets/img/powerbi.png" alt="Power BI" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 15: SOFT SKILLS -->
+    <section class="slide" data-title="Soft Skills">
+      <div class="card">
+        <h2 class="h2">Soft <span class="accent">Skills</span></h2>
+
+        <div class="skill-grid">
+          <div class="skill">
+            <h3 class="h3">Communication</h3>
+            <p class="muted">Clear reporting and cross-team alignment</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">Problem Solving</h3>
+            <p class="muted">Root cause thinking + real-floor action</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">Leadership</h3>
+            <p class="muted">Team mentoring + discipline building</p>
+          </div>
+          <div class="skill">
+            <h3 class="h3">Adaptability</h3>
+            <p class="muted">Fast learning, new systems, new challenges</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="h3">Ergonomics Focus</h3>
+          <img class="img" src="assets/img/ergonomics.jpg" alt="Ergonomics" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 16: CONTACT -->
+    <section class="slide" data-title="Get in Touch">
+      <div class="card">
+        <h2 class="h2">Get in <span class="accent">Touch</span></h2>
+        <p class="lead">Driving innovation and sustainability in apparel manufacturing’s future.</p>
+
+        <div class="contact">
+          <div class="contact-item">
+            <span class="k">Phone</span>
+            <span class="v">+880-1774-005521</span>
+          </div>
+          <div class="contact-item">
+            <span class="k">Email</span>
+            <span class="v">yourmail@example.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="k">LinkedIn</span>
+            <span class="v">Add your LinkedIn link</span>
+          </div>
+        </div>
+
+        <p class="muted small">Change the email/links anytime in this slide.</p>
+      </div>
+    </section>
+
+    <!-- Navigation Controls (always visible) -->
+    <div class="nav">
+      <button class="btn" id="btnMenu" title="Back to Menu">☰ Menu</button>
+      <div class="nav-right">
+        <button class="btn" id="btnPrev" title="Previous">← Prev</button>
+        <button class="btn primary" id="btnNext" title="Next">Next →</button>
+      </div>
     </div>
-  </header>
 
-  <main class="container page">
-    <section class="card reveal">
-      <h1 class="h1grad">Md Mustafizur Rahman</h1>
-      <div class="subtitle">Garments Operation Specialist • Industrial Engineering • Lean</div>
-      <p class="lead">
-        I help textile & apparel factories improve productivity through data-driven operational excellence
-        (OEE, SMED, KPI governance, and shopfloor discipline).
-      </p>
+    <div class="pageNo" id="pageNo">01 / 16</div>
 
-      <div class="pills">
-        <span class="pill">Lean</span><span class="pill">OEE</span><span class="pill">SMED</span>
-        <span class="pill">KPI</span><span class="pill">Capacity Planning</span><span class="pill">6S</span>
-      </div>
-
-      <div class="btns">
-        <a class="btn" href="projects.html">See Projects</a>
-        <a class="btn ghost" href="contact.html">Contact</a>
-      </div>
-    </section>
-
-    <section class="grid grid-3 reveal stats">
-      <div class="card hoverify hoverify tilt hoverlift">
-        <h3>Experience</h3>
-        <div class="statNum" data-count="6" data-suffix="+">0+</div>
-        <div class="statLbl">Years in apparel & textiles</div>
-      </div>
-      <div class="card tilt hoverlift">
-        <h3>Lean Tools</h3>
-        <div class="statNum" data-count="12" data-suffix="+">0+</div>
-        <div class="statLbl">OEE, SMED, STW, Gemba, etc.</div>
-      </div>
-      <div class="card tilt hoverlift">
-        <h3>Focus</h3>
-        <div class="statNum">OTD</div>
-        <div class="statLbl">Delivery + quality + efficiency</div>
-      </div>
-    </section>
-
-    <section class="card reveal">
-      <h2>Highlights</h2>
-      <div class="grid grid-4">
-        <div class="card tilt hoverlift">
-          <h3>New Line Set-up</h3>
-          <p class="lead">Line set-up support from recruitment to stable running.</p>
-        </div>
-        <div class="card tilt hoverlift">
-          <h3>Efficiency Ramp-up</h3>
-          <p class="lead">Improved new floor performance with balanced workflow.</p>
-        </div>
-        <div class="card tilt hoverlift">
-          <h3>Quality Discipline</h3>
-          <p class="lead">Stronger defect control through visual systems.</p>
-        </div>
-        <div class="card tilt hoverlift">
-          <h3>R&D Layout</h3>
-          <p class="lead">Layout planning for better flow and faster response.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">© <span id="year"></span> Mustafiz</footer>
   </main>
 
   <script src="script.js"></script>
