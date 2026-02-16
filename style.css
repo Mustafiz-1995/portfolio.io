@@ -186,3 +186,38 @@ h3{margin:0 0 8px; font-size:18px; color:var(--c)}
   border-top:1px solid var(--line);
   color:var(--muted);
 }
+/* =========================
+   PAGE TRANSITION (Fade in/out)
+   ========================= */
+body {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+body.page-leave {
+  opacity: 0;
+}
+
+/* =========================
+   SCROLL REVEAL (Fade + slide)
+   Use class="reveal" on sections/cards
+   ========================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Small hover lift for cards (optional) */
+.hoverlift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hoverlift:hover {
+  transform: translateY(-6px);
+}
