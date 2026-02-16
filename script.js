@@ -1,112 +1,101 @@
-// Active nav link by page
-(function(){
-  const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  document.querySelectorAll(".nav-links a").forEach(a=>{
-    if ((a.getAttribute("href")||"").toLowerCase() === path) a.classList.add("active");
-  });
-})();
+const slides = Array.from(document.querySelectorAll(".slide"));
+const pageNo = document.getElementById("pageNo");
+const btnPrev = document.getElementById("btnPrev");
+const btnNext = document.getElementById("btnNext");
+const btnMenu = document.getElementById("btnMenu");
+const menuGrid = document.getElementById("menuGrid");
 
-// Scroll reveal
-const reveals = document.querySelectorAll(".reveal");
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add("show");
-  });
-},{threshold:0.15});
-reveals.forEach(el=>io.observe(el));
+let current = 0; // slide index
 
-// Top progress bar
-const bar = document.querySelector(".progress");
-function updateProgress(){
-  const h = document.documentElement;
-  const max = h.scrollHeight - h.clientHeight;
-  const p = max > 0 ? (h.scrollTop / max) : 0;
-  if(bar) bar.style.transform = `scaleX(${p})`;
+function pad2(n){ return String(n).padStart(2, "0"); }
+
+function updatePageNo(){
+  const total = slides.length;
+  pageNo.textContent = `${pad2(current+1)} / ${pad2(total)}`;
 }
-document.addEventListener("scroll", updateProgress, {passive:true});
-updateProgress();
 
-// Count-up numbers (data-count)
-function countUp(el){
-  const target = Number(el.dataset.count || "0");
-  let cur = 0;
-  const dur = 900;
-  const start = performance.now();
-  function tick(t){
-    const k = Math.min(1,(t-start)/dur);
-    cur = Math.floor(target * k);
-    el.textContent = cur + (el.dataset.suffix || "");
-    if(k<1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+function buildMenu(){
+  // Menu from slide titles (skip Home itself)
+  const items = slides.map((s, idx) => ({ idx, title: s.dataset.title || `Slide ${idx+1}` }));
+  const menuItems = items.filter(x => x.idx !== 0);
+
+  menuGrid.innerHTML = "";
+  menuItems.forEach(x => {
+    const b = document.createElement("button");
+    b.className = "menu-btn";
+    b.innerHTML = `<div style="font-weight:700">${x.title}</div><div class="muted small">Go to page ${pad2(x.idx+1)}</div>`;
+    b.addEventListener("click", () => goTo(x.idx));
+    menuGrid.appendChild(b);
+  });
 }
-const counters = document.querySelectorAll("[data-count]");
-const io2 = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting && !e.target.dataset.done){
-      e.target.dataset.done="1";
-      countUp(e.target);
-    }
-  });
-},{threshold:0.4});
-counters.forEach(el=>io2.observe(el));
 
-// Simple tilt on cards
-document.querySelectorAll(".tilt").forEach(card=>{
-  card.addEventListener("mousemove",(e)=>{
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left)/r.width - 0.5;
-    const y = (e.clientY - r.top)/r.height - 0.5;
-    card.style.transform = `translateY(-3px) rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*6).toFixed(2)}deg)`;
-  });
-  card.addEventListener("mouseleave",()=>{
-    card.style.transform = "";
-  });
-});
+function goTo(idx){
+  if (idx < 0 || idx >= slides.length || idx === current) return;
 
-// Footer year
-const y = document.getElementById("year");
-if(y) y.textContent = new Date().getFullYear();
-/* =========================
-   1) Page transition on link click
-   ========================= */
-document.addEventListener("click", (e) => {
-  const a = e.target.closest("a");
-  if (!a) return;
+  const oldSlide = slides[current];
+  const newSlide = slides[idx];
 
-  const href = a.getAttribute("href");
-  if (!href) return;
+  // Leave animation
+  oldSlide.classList.remove("enter");
+  oldSlide.classList.add("leave");
 
-  // Only internal html pages (your portfolio pages)
-  const isInternalPage =
-    href.endsWith(".html") &&
-    !href.startsWith("http") &&
-    !href.startsWith("#") &&
-    !href.startsWith("mailto:") &&
-    !href.startsWith("tel:");
-
-  if (!isInternalPage) return;
-
-  e.preventDefault();
-  document.body.classList.add("page-leave");
-
+  // After leave, switch
   setTimeout(() => {
-    window.location.href = href;
-  }, 220);
+    oldSlide.classList.remove("active", "leave");
+
+    current = idx;
+
+    newSlide.classList.add("active", "enter");
+    setTimeout(() => newSlide.classList.remove("enter"), 950);
+
+    updatePageNo();
+    // keep URL hash for direct jump
+    location.hash = `#p${current+1}`;
+  }, 920);
+}
+
+function next(){ goTo(current + 1); }
+function prev(){ goTo(current - 1); }
+function menu(){ goTo(0); }
+
+btnNext.addEventListener("click", next);
+btnPrev.addEventListener("click", prev);
+btnMenu.addEventListener("click", menu);
+
+// Keyboard navigation
+window.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") next();
+  if (e.key === "ArrowLeft") prev();
+  if (e.key.toLowerCase() === "m") menu();
 });
 
-/* =========================
-   2) Scroll reveal animation
-   ========================= */
-const revealItems = document.querySelectorAll(".reveal");
+// Swipe (mobile)
+let startX = 0;
+window.addEventListener("touchstart", e => { startX = e.touches[0].clientX; }, {passive:true});
+window.addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
+  const dx = endX - startX;
+  if (Math.abs(dx) > 50){
+    if (dx < 0) next();
+    else prev();
+  }
+}, {passive:true});
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("active");
-    });
-  },
-  { threshold: 0.12 }
-);
+// Direct open by hash (example: #p5)
+function initFromHash(){
+  const h = location.hash || "";
+  const m = h.match(/^#p(\d+)$/);
+  if (!m) return;
+  const p = parseInt(m[1], 10);
+  if (!Number.isFinite(p)) return;
+  const idx = p - 1;
+  // jump without animation on load
+  slides[current].classList.remove("active");
+  current = Math.max(0, Math.min(slides.length - 1, idx));
+  slides[current].classList.add("active");
+  updatePageNo();
+}
 
-revealItems.forEach((el) => revealObserver.observe(el));
+buildMenu();
+updatePageNo();
+initFromHash();
